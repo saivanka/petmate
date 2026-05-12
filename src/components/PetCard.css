@@ -1,0 +1,44 @@
+.pet-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.pet-image-container {
+  height: 200px;
+  overflow: hidden;
+}
+.pet-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.pet-card:hover .pet-image {
+  transform: scale(1.05);
+}
+.pet-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.pet-breed {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.pet-location {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+.btn-connect {
+  width: 100%;
+}
