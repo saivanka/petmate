@@ -1,16 +1,71 @@
-# React + Vite
+# petmate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite web app for pet owners. It opens with a login screen, then an onboarding step for new users, and then a routed app with a home page, a map to explore, pet events, a profile page, and a chat page.
 
-Currently, two official plugins are available:
+## What it does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Login first: `src/App.jsx` shows the Login page until a user is set, then shows Onboarding until onboarding is marked complete. Both states are kept in the browser's local storage (`petmate_user` and `petmate_onboarded_<username>`).
+- Home (`/`): the main page, with pet cards (`src/components/PetCard.jsx`).
+- Explore map (`/map`): a Leaflet map page, with a location picker (`src/components/LocationPicker.jsx`).
+- Events (`/events`): a pet events page, with an event room component (`src/components/EventRoom.jsx`).
+- Profile (`/profile`): the signed-in user's profile page.
+- Chat (`/chat`): an AI chat page.
+- Navigation: a shared Navbar (`src/components/Navbar.jsx`) with logout, which clears the stored user.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 and Vite 8 (see `package.json`)
+- React Router (`react-router-dom`) for routing
+- Leaflet and React Leaflet for maps
+- Lucide React for icons
+- ESLint for linting (see `eslint.config.js`)
 
-## Expanding the ESLint configuration
+## How to run
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+Build for production and preview the build:
+
+```bash
+npm run build
+npm run preview
+```
+
+Lint the project:
+
+```bash
+npm run lint
+```
+
+## Project structure
+
+```
+index.html              # Entry page
+vite.config.js          # Vite configuration
+eslint.config.js        # ESLint configuration
+src/
+  main.jsx              # App entry point
+  App.jsx               # Routing, login and onboarding gates
+  App.css, index.css    # Styles
+  assets/               # Static assets
+  components/
+    Navbar.jsx          # Shared navigation bar
+    PetCard.jsx         # Pet card
+    LocationPicker.jsx  # Map location picker
+    EventRoom.jsx       # Event room
+  pages/
+    Home.jsx            # Home page (/)
+    ExploreMap.jsx      # Map page (/map)
+    Events.jsx          # Events page (/events)
+    Profile.jsx         # Profile page (/profile)
+    AIChat.jsx          # Chat page (/chat)
+    Login.jsx           # Login page
+    Onboarding.jsx      # Onboarding page
+```
+
+## Status
+
+This is an early, single-commit app: sign-in and onboarding are local-storage only, with no backend in this repository.
